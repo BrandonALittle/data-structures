@@ -23,6 +23,6 @@ Stack.prototype.size = function() {
 };
 
 var Stanley = new Stack();
-console.log(Stanley);
+//console.log(Stanley);
 
 
