@@ -10,17 +10,17 @@ var Stack = function() {
 var stackMethods = {};
 
 stackMethods.push = function(value) {
-    let index = Object.keys(this.storage).length;
-    this.storage[index] = value;
+  let index = Object.keys(this.storage).length;
+  this.storage[index] = value;
 };
 
 stackMethods.pop = function() {
-    let index = Object.keys(this.storage).length-1;
-    let temp = this.storage[index];
-    delete this.storage[index];
-    return temp;
-  };
+  let index = Object.keys(this.storage).length-1;
+  let temp = this.storage[index];
+  delete this.storage[index];
+  return temp;
+};
 
 stackMethods.size = function() {
-    return Object.keys(this.storage).length;
-  };
+  return Object.keys(this.storage).length;
+};
