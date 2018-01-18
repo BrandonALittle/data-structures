@@ -7,15 +7,11 @@ var Queue = function() {
 };
 
 Queue.prototype.enqueue = function(value) {
-  // add to storage
   this.storage[this.newestIndex] = value;
   this.newestIndex++;
 };
 
 Queue.prototype.dequeue = function() {
-  // store instance in temp variable
-  // delete instance
-  // return temp variable
   if (this.oldestIndex !== this.newestIndex) {
     var temp = this.storage[this.oldestIndex];
     delete this.storage[this.oldestIndex];
