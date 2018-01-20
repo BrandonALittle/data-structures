@@ -58,14 +58,13 @@ var Node = function(value) {
 var Stanley = LinkedList();
 Stanley.addToTail(5);
 
-// head (prop), --> next node
-// {val: something, next: {}}
-// {val: something, next: val2}, {val2: something, next: val3}, {val: something, next: val4}
 
 /*
  * Complexity: What is the time complexity of the above functions?
- */
+*/
 
+
+// PSEUDOCODE
 // 1. Should designate a new tail when new nodes are added
 // identify the tail
 // the tail should be a node with next() === null
