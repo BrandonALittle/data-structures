@@ -41,27 +41,6 @@ var cypress = Tree(5);
 console.log(cypress.contains(6));
 
 /*
- * Complexity: What is the time complexity of the above ueunct /ps/
+ * Complexity: What is the time complexity of the above function
 */
-//PSEUDOCODE
 
-// iterate over children arrays
-// each new child will be an array
-// let bool = false;
-//     var startNode = list.head;
-
-//     var searchNodes = function (node, target) {
-//       if (node.value === target) {
-//         return true;
-//       } else {
-//         if (node.next !== null) {
-//           let nextNode = node.next;
-//           return searchNodes(nextNode, target);
-//         } else {
-//           return false;
-//         }
-//       }
-//     };
-
-//     bool = searchNodes(startNode, target);
-//     return bool;
