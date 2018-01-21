@@ -68,4 +68,11 @@ describe('graph', function() {
     expect(graph.hasEdge(3, 5)).to.equal(true);
     expect(graph.hasEdge(5, 5)).to.equal(true);
   });
+
+  it('should work with negative numbers', function() {
+    graph.addNode(-1);
+    graph.addNode(-0);
+    graph.addEdge(-1, -0);
+    expect(graph.hasEdge(-1, -0)).to.equal(true);
+  });
 });
