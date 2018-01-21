@@ -47,8 +47,14 @@ describe('hashTable', function() {
     window.getIndexBelowMaxForKey = oldHashFunction;
   });
 
+  it('should accept stringified falsy values', function() {
+    hashTable.insert('undefined', 'Tyler');
+    hashTable.remove('undefined');
+    expect(hashTable.retrieve('undefined')).to.equal(undefined);
+  });
+
   // (Advanced! Remove the extra "x" when you want the following tests to run)
-  xit ('should double in size when needed', function() {
+  it ('should double in size when needed', function() {
     _.each(people, function(person) {
       var firstName = person[0];
       var lastName = person[1];
