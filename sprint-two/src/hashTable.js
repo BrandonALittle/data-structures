@@ -10,6 +10,7 @@ HashTable.prototype.insert = function(k, v) {
   let insertTuple = [k, v]; // create tuple
   let storage = this._storage;
   let bucketArray = storage.get(index);
+  let count = 0;
   if (bucketArray === undefined) {
     storage.set(index, [insertTuple]);
   } else {
@@ -24,6 +25,22 @@ HashTable.prototype.insert = function(k, v) {
       bucketArray.push(insertTuple);
     }
   }
+
+  storage.each(function(bucket) {
+    if (bucket) {
+      count++;
+    }
+  });
+
+  let threshold = this._limit * .60;
+  if (count >= threshold) {
+    console.log('threshold', threshold);
+    console.log(this._storage);
+    let newLimit = this._limit * 2;
+    this.resize(newLimit);
+  } //else if (count <= (this._limit * .25)) {
+  //   this.resize(.5 * this._limit);
+  // }
 };
 
 HashTable.prototype.retrieve = function(k) {
@@ -36,7 +53,6 @@ HashTable.prototype.retrieve = function(k) {
       return currentTuple[1];
     }
   }
-
 };
 
 HashTable.prototype.remove = function(k) {
@@ -51,10 +67,35 @@ HashTable.prototype.remove = function(k) {
   }
 };
 
+HashTable.prototype.resize = function(newLimit) {
+  let newHT = new HashTable();
+  newHT._limit = newLimit;
+  newHT._storage = LimitedArray(newLimit);
 
+  let storage = this._storage;
+
+  // iterate through current hash table
+  // recurse through every part of storage array
+  storage.each(function(bucket) {
+    if (bucket) {
+      for (let i = 0; i < bucket.length; i++) {
+        let tuple = bucket[i];
+        let index = getIndexBelowMaxForKey(tuple[0], newHT._limit);
+        newHT._storage.set(index, [tuple]);
+      }
+    }
+  });
+
+  this._limit = newHT._limit;
+  this._storage = null;
+  this._storage = newHT._storage;
+
+};
 
 /*
  * Complexity: What is the time complexity of the above functions?
  */
+
+
 
 
