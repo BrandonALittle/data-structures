@@ -52,4 +52,11 @@ describe('linkedList', function() {
   });
 
   // add more tests here to test the functionality of linkedList
+
+  it('should accept decimals', function() {
+    linkedList.addToTail(3.14);
+    linkedList.addToTail(8.76);
+    linkedList.removeHead();
+    expect(linkedList.contains(3.14)).to.equal(false);
+  });
 });
